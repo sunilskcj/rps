@@ -1,6 +1,9 @@
 
 import React, { useState, useEffect}  from 'react'
-
+import Paper from '../assets/Paper.png'
+import Rock from '../assets/Rock.png'
+import Scissors from '../assets/Scissors.png'
+import Title from '../assets/title.png'
 import $ from 'jquery'
 import './Main.css'
 
@@ -27,11 +30,12 @@ function Main() {
 
         if (computer_choice === 1){
          $( "#R"  ).css("display", "none")
-         $('#X').attr("src","/assets/Paper.png")
+         $('#X').attr("src",Paper)
          $( ".winner"  ).html("Draw")
         }
         else if(computer_choice === 0){
-         $( "#X"  ).css("display", "none")
+         $( "#R"  ).css("display", "none")
+         $( "#X"  ).attr("src",Rock)
          $( ".winner"  ).html("You Win")
              SCORE+=1 // SCORE =SCORE + 1
              setScore(SCORE)  
@@ -44,7 +48,7 @@ function Main() {
         $('input').prop('disabled',true)
   
     }
-    const Scissors = () => {
+    const scissors = () => {
         let user_choice = 2 ;
         const computer_choice =  Math.floor((Math.random() * 3)  );
         
@@ -52,7 +56,7 @@ function Main() {
 
         if (computer_choice === 2){
             $( "#R"  ).css("display", "none")
-            $('#P').attr("src","/assets/Scissors.png")
+            $('#P').attr("src",Scissors)
             $( ".winner"  ).html("Draw")
             
             
@@ -64,7 +68,7 @@ function Main() {
             setScore(SCORE)
             
            }else if (computer_choice === 0){
-            $('#P').attr("src","/assets/Rock.png")
+            $('#P').attr("src",Rock)
             $( "#R"  ).css("display", "none") 
             $( ".winner"  ).html("You Lose")
            }
@@ -72,26 +76,27 @@ function Main() {
         $('input').prop('disabled',true)
     }
 
-    const Rock = () => {
+    const rock = () => {
         let user_choice = 0 ;
         const computer_choice =  Math.floor((Math.random() * 3)  );
         
         
         if (computer_choice === 0) {
-            $( "#P"  ).css("display", "none")
-            $('#X').attr("src","/assets/Rock.png")
+            $( "#R"  ).css("display", "none")
+            $('#X').attr("src",Rock)
+            $('#P').attr("src",Rock)
             $( ".winner"  ).html("Draw")
         }else if (computer_choice === 2){
-            $('#P').attr("src","/assets/Rock.png")
-            $('#X').attr("src","/assets/Scissors.png")
+            $('#P').attr("src",Rock)
+            $('#X').attr("src",Scissors)
             $( "#R"  ).css("display", "none")
             $( ".winner"  ).html("You Win")
             SCORE+=1 // SCORE =SCORE + 1
             setScore(SCORE)
             
         }else{
-            $('#P').attr("src","/assets/Rock.png")
-            $('#X').attr("src","/assets/Paper.png")
+            $('#P').attr("src",Rock)
+            $('#X').attr("src",Paper)
             $( "#R"  ).css("display", "none")
             $( ".winner"  ).html("You Lose")
            }
@@ -102,9 +107,9 @@ function Main() {
     const _refreshPage = () => {
         
         $('input').prop('disabled',false)
-        $('#P').attr("src","/assets/Paper.png")
-        $('#R').attr("src","/assets/Rock.png")
-        $('#X').attr("src","/assets/Scissors.png")
+        $('#P').attr("src",Paper)
+        $('#R').attr("src",Rock)
+        $('#X').attr("src",Scissors)
         $( "#P"  ).css("display", "flex")
         $( "#R"  ).css("display", "flex")
         $( "#X"  ).css("display", "flex")
@@ -116,7 +121,7 @@ function Main() {
         <div className="wrapper">
         <div className="scoreboard"> 
             <div className="title">
-                <img src='/assets/title.png' alt='tit'/>
+                <img src={Title} alt='Title'/>
             </div>
             <div className="score">
                 
@@ -133,10 +138,11 @@ function Main() {
             <button className='BUTTON_ZWE' onClick={_refreshPage}>Play Again</button> 
         </div>
         <div class="parent">
-<div class="div1"> <input onClick={paper} type="image" id="P" alt ="image"  src="/assets/Paper.png" />
+<div class="div1"> <input onClick={paper} type="image" id="P" alt ="image"  src={Paper} />
+
              </div>
-<div class="div2"> <input onClick={ Scissors } type="image"  id="X" alt ="image" src="/assets/Scissors.png" /></div>
-<div class="div3">  <input onClick={ Rock } id="R" type='image'  alt ="image" src="/assets/Rock.png" /> </div>
+<div class="div2"> <input onClick={ scissors } type="image"  id="X" alt ="image" src={Scissors} /></div>
+<div class="div3">  <input onClick={ rock } id="R" type='image'  alt ="image" src={Rock} /> </div>
 </div> 
         
       </div>
