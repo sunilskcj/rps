@@ -1,12 +1,12 @@
-
-import './App.css';
+import React from 'react'
+import Main from './Components/Main'
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Sunil CJ</h1>
-    </div>
-  );
+    return (
+        <div>
+            <Main />
+        </div>
+    )
 }
 
-export default App;
+export default App
